@@ -33,6 +33,7 @@ var.strip().startswith('c') #Trim e Inicia com 'c'
 
 
 
+#Listas
 letras = ['a','b','c','d']
 len(letras)     #Tamanho
 letras[0]       #Posicao
@@ -45,4 +46,40 @@ letras.append('e')      #Insere a letra 'e'
 letras.insert(0,'a')    #Insere a letra 'a' na posição 0
 letras.pop()            #Remove a ultima posição
 letras.pop(0)           #Remove a posição informada
+letras.append('z')      
+letras.append('t')      
+letras.remove('a')
 
+letras.count('a')
+letras.reverse()
+
+
+#Tupla
+ling = ('python','golang','java')
+type(ling)
+len(ling)
+ling[0]
+ling[1:]
+ling[-1]
+ling.count('python')
+dir(ling)
+
+
+#Dicionário
+cliente = {'nome':'Marcos', 'dataNascimento':'1978-02-02', 'email':'m2c.andre@gmail.com'}
+type(cliente)
+cliente['nome']
+cliente['nome'] = 'Marcos André'
+cliente.keys()
+cliente.values()
+cliente.items()
+cliente.get('name')
+
+
+#
+nome, idade = 'Marcos André', 41
+type(nome)
+type(idade)
+nome + idade
+nome + str(idade)
+'{} - {}'.format(nome, idade)
