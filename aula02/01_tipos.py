@@ -83,3 +83,30 @@ type(idade)
 nome + idade
 nome + str(idade)
 '{} - {}'.format(nome, idade)
+'{0}-{1}'.format(nome, idade)
+'{1}-{0}'.format(nome, idade)
+'{nome}-{idade}'.format(nome=nome, idade=idade)
+'{idade}-{nome}'.format(nome=nome, idade=idade)
+
+num = '2019'
+float(num)
+int(num)
+num = int(num)
+bin(num)
+hex(num)
+
+
+letras = ['a','b','c','d','d']
+type(letras)
+tuple(letras)
+
+ling = {'Marcos':'javascript', 'André':'php'}
+ling.keys()
+list(ling.keys())
+
+list(ling.values())
+
+ling = list(ling.items())
+dict(ling)
+
+
