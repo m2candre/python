@@ -1,0 +1,134 @@
+https://donjayamanne.github.io/pythonVSCodeDocs/docs/python-path/
+
+https://fuchsia.dev/
+
+
+
+# Postgress
+    # Start
+        sudo systemctl start postgresql
+    # Status
+        sudo systemctl status postgresql
+    # Stop
+        sudo systemctl stop postgresql
+    # Root
+        sudo su
+    # Super Usuário
+        Entrar
+            su - postgres
+        Sair
+            \q
+    # Ferramenta na linha de comando
+        Acesso a instancia local
+            psql
+        Acesso a instancia remoto
+            psql -h localhost NomeBancoDeDados U- NomeUsuario
+    # Criar Usuário
+        create user admin password '4linux';
+    # Excluido Usuário
+        drop role admin
+    # Criando Banco de Dados
+        create database projeto owner admin;
+    # Excluindo Banco de Dados
+        drop database Nome;
+    # Acessando o Banco de Dados
+        psql -h localhost projeto -U admin
+    # Lista tabelas
+        \dt 
+    # Criar Table
+        create table usuario (id serial, nome varchar(50), dtnasc date);
+        *** Tipo: serial (Campo Integer not null e cria sequence)
+    # Visualizar a tabela
+        \d usuario
+    # Criando um Usuário
+        insert into usuario (nome, dtnasc) 
+        values ('Marcos André', '02/02/1978')
+             , ('Maria Eduarda', '14/09/2011')
+             , ('Brenno Ribeiro', '04/08/2014');
+    # Selecionando
+        select * from usuario 
+        select * from usuario where nome = 'Marcos André'
+    # Atualizando Usuário
+        update usuario set nome = 'Ivania Ribeiro', dtnasc = '21/08/1985' where id = 2;
+        update usuario set nome = 'Maria Eduarda', dtnasc = '14/09/2011' where id = 3;
+        insert into usuario (nome, dtnasc) values ('Brenno Ribeiro', '04/08/2014');
+    
+
+#MySQL
+    # Start
+        sudo systemctl start mysql
+    # Status
+        sudo systemctl status mysql
+    # Stop
+        sudo systemctl stop mysql
+    # Root
+        sudo su
+    # Super Usuário
+        root
+    # Ferramenta na linha de comando
+        Acesso a instancia local
+            mysql
+    # Exibir os Banco de Dados
+        show databases;
+    # Criando o Banco de Dados
+        create database projeto;
+    # Criando Usuário
+        grant all privileges on projeto.* to admin@localhost identified by '4linux' with grant option;
+        flush privileges;
+    # Acessando o Banco de Dados
+        mysql -u admin -p
+        use projeto;
+        show tables;
+    # Criando tabela
+        create table usuario (id integer primary key not null auto_increment, nome varchar(50), dtnasc datetime);
+    # Criando um Usuário
+        insert into usuario (nome, dtnasc) values ('Marcos André', '1978-02-02')
+        insert into usuario (nome, dtnasc) 
+        values ('Ivania Ribeiro', '1985-08-21')
+             , ('Maria Eduarda', '2011-09-14')
+             , ('Brenno Ribeiro', '2014-08-04');
+    # Selecionando
+        select * from usuario 
+        select * from usuario where nome = 'Marcos André'
+
+
+#MongoDB
+    # Root
+        sudo su
+    # Install
+        apt install mongodb
+    # Start
+        systemctl start mongodb
+    # Status
+        systemctl status mongodb
+    # Stop
+        systemctl stop mongodb
+    # Shell
+        mongo
+    # List databases    
+        show dbs;
+    # Iniciando o banco de dados
+        use projeto;
+    # Listando tabelas  
+        show tables;
+    # Inserindo dados
+        db.pessoas.insert({_id:1, nome:'Marcos', sobrenome:'André', dtnasc:'1978-02-02'})
+        db.pessoas.insert({_id:2, nome:'Ivania', sobrenome:'Ribeiro', dtnasc:'1985-08-21'})
+        db.pessoas.insert({_id:3, nome:'Maria', sobrenome:'Eduarda', dtnasc:'2011-09-14'})
+        db.pessoas.insert({_id:4, nome:'Brenno', sobrenome:'Ribeiro', dtnasc:'2014-08-04'})
+    # Pesquisa
+        db.pessoas.find()
+        db.pessoas.find({_id:1})
+    # Deletar
+        db.pessoas.remove({_id:1})
+    # Atualização
+        db.pessoas.update({_id:1}, {$set:{dtnasc:'2019-07-04'}})
+        db.pessoas.update({_id:1}, {$set:{projetos:[{nome:'Projeto1', desc:'Primeiro projeto'}]}})
+        db.pessoas.update({_id:1}, {$push:{projetos:{nome:'Projeto2', desc:'Segundo projeto'}}})
+        db.pessoas.update({_id:1}, {$pull:{projetos:{nome:'Projeto2'}}})
+        
+        db.pessoas.update({_id:1}, {$pull:{projetos}})
+
+    # Lista
+        db.pessoas.find().pretty()
+
