@@ -1,0 +1,96 @@
+Comandos de MySQL:
+
+    sudo su
+    systemctl status mysql
+    systemctl start mysql
+    mysql
+    show databases;
+    create database projeto;
+    show databases;
+    grant all privileges on projeto.* to admin@localhost identified by '4linux' with grant option;
+    flush privileges;
+    \q
+    mysql -u admin -p
+    show databases;
+    use projeto;
+    show tables;
+    create table usuarios (id integer primary key not null auto_increment, nome varchar(50), dtnasc datetime);
+    show tables;
+    describe usuarios;
+    insert into usuarios (nome, dtnasc) values ('João de Alcântara', '1975-05-13');
+    select * from usuarios;
+    select nome, dtnasc from usuarios;
+    insert into usuarios (nome, dtnasc)
+    values ('Maria de Santana', '1985-12-05'),
+        ('Juliana Silveira', '1989-04-13');
+    select * from usuarios;
+    update usuarios set dtnasc = '1984-04-13' where id = 3;
+    select * from usuarios;
+    delete from usuarios where id = 1;
+    select * from usuarios;
+    select * from usuarios where id = 3;
+    select * from usuarios where nome = 'Maria de Santana';
+    select * from usuarios where nome like 'Juliana%';
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Comandos de PostgreSQL:
+    sudo su
+    systemctl status postgresql
+    systemctl start postgresql
+    su - postgres
+    psql
+    create user admin password '4linux';
+    create database projeto owner admin;
+    \q
+    exit
+    psql -h localhost projeto -U admin
+    #Verificar tabelas do banco
+    \dt
+    create table usuarios (id serial, nome varchar(50), dtnasc date);
+    \dt
+    #Exibe a extrutura da tabela
+    \d usuarios
+    insert into usuarios (nome, dtnasc) values ('João de Alcântara', '1975-05-13');
+    select * from usuarios;
+    select nome, dtnasc from usuarios;
+    insert into usuarios (nome, dtnasc)
+    values ('Maria de Santana', '1985-12-05'),
+        ('Juliana Silveira', '1989-04-13');
+    select * from usuarios;
+    update usuarios set dtnasc = '1984-04-13' where id = 3;
+    select * from usuarios;
+    delete from usuarios where id = 1;
+    select * from usuarios;
+    select * from usuarios where id = 3;
+    select * from usuarios where nome = 'Maria de Santana';
+    select * from usuarios where nome like 'Juliana%';
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Comandos MongoDB:
+    sudo su
+    apt install mongodb
+    systemctl status mongodb
+    mongo
+        show dbs;
+        use projeto
+        show tables
+        db.pessoas.insert({_id:1, nome:'João', sobrenome:'das Neves', dtnasc:'1982-05-13'})
+        db.pessoas.find()
+        db.pessoas.find({_id:1})
+        db.pessoas.remove({_id:1})
+        db.pessoas.find({_id:1})
+        db.pessoas.insert({_id:1, nome:'João', sobrenome:'das Neves', dtnasc:'1982-05-13'})
+        db.pessoas.insert({_id:2, nome:'Dito', sobrenome:'Carvoeiro', dtnasc:'1945-02-27'})
+        db.pessoas.find()
+        db.pessoas.update({_id:2}, {$set:{dtnasc:'1975-02-27'}})
+        db.pessoas.find()
+        db.pessoas.update({_id:1}, {$set:{projetos:[{nome:'Projeto1', desc:'Primeiro projeto'}]}})
+        db.pessoas.find()
+        db.pessoas.find().pretty()
+        db.pessoas.update({_id:1}, {$push:{projetos:{nome:'Projeto2', desc:'Segundo projeto'}}})
+        db.pessoas.find().pretty()
+        db.pessoas.update({_id:1}, {$pull:{projetos:{nome:'Projeto2'}}})
+        db.pessoas.find().pretty()

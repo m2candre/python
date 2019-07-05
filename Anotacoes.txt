@@ -3,6 +3,9 @@ https://donjayamanne.github.io/pythonVSCodeDocs/docs/python-path/
 https://fuchsia.dev/
 
 
+sudo pip3 install psycopg2
+sudo apt install python3 mysqldb
+sudo pip3 install pymongo
 
 # Postgress
     # Start
@@ -34,7 +37,7 @@ https://fuchsia.dev/
     # Acessando o Banco de Dados
         psql -h localhost projeto -U admin
     # Lista tabelas
-        \dt 
+        \dt
     # Criar Table
         create table usuario (id serial, nome varchar(50), dtnasc date);
         *** Tipo: serial (Campo Integer not null e cria sequence)
