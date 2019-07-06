@@ -1,0 +1,25 @@
+Aula07
+
+# Instalando 
+    pip3 install virtualenv
+
+# Criando o ambinete
+    virtualenv -p /usr/bin/python3 ambiente1
+
+
+# Lista o conteúdo do ambiente1
+    ls ambiente1
+
+# Acessando o ambiente criado
+    source ambiente1/bin/activate
+# Saindo o ambiente criado
+    deactiva
+
+
+# Lista as libs instalada no ambiente
+    pip3 freeze
+    pip3 freeze > requirements.txt
+
+# Instalando biblioteca
+    pip install flask
+
