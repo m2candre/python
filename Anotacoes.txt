@@ -7,7 +7,8 @@ sudo pip3 install psycopg2
 sudo apt install python3 mysqldb
 sudo pip3 install pymongo
 pip3 install sqlalchemy
-
+pip3 install behave
+behave funcionalidade.feature
 
 # Postgress
     # Start
